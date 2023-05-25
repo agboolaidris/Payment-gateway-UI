@@ -1,5 +1,5 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-//import { Bars } from "react-loader-spinner";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+
 import { cva, VariantProps } from "class-variance-authority";
 import { IconType } from "react-icons";
 
