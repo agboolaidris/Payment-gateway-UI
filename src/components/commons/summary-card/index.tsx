@@ -14,12 +14,12 @@ export const SummaryCard = () => {
             <div className="text-gray-700">
               <p className="text-sm">Idris Agboola</p>
               <p className="flex items-center gap-1 text-sm font-semibold text-blue-950">
-                <div className="[&>span]:bg-gray-900 flex  [&>span]:w-1 [&>span]:h-1 gap-1  [&>span]:rounded-full ">
+                <span className="[&>span]:bg-gray-900 flex  [&>span]:w-1 [&>span]:h-1 gap-1  [&>span]:rounded-full ">
                   <span />
                   <span />
                   <span />
                   <span />
-                </div>
+                </span>
                 <span>9826</span>
               </p>
             </div>
