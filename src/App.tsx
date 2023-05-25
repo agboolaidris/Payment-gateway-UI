@@ -1,14 +1,49 @@
 import { useState } from "react";
-import { Modal } from "./components/commons/modal";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
-import { AddAtmCardForm } from "./components/forms/AddAtmCardForm";
+import { Modal } from "./components/commons/modal";
+import { AddAtmCardForm, AtmDetail } from "./components/forms/AddAtmCardForm";
 import { AceCoinLogo } from "./components/commons/ace-coin-logo";
 import { NumberCard } from "./components/commons/number-card";
-
 import { SummaryCard } from "./components/commons/summary-card";
+
+// Schema for validating ATM information
+const AtmInformationSchema = Yup.object({
+  password: Yup.string().required("Required").min(3),
+  atm_number: Yup.string()
+    .required("Required")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(8),
+  ccv_number: Yup.string()
+    .required("Required")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(3)
+    .max(3),
+  expire_date_month: Yup.string()
+    .required("Required")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(2)
+    .max(2),
+
+  expire_date_year: Yup.string()
+    .required("Required")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(2)
+    .max(2),
+});
 
 function App() {
   const [openModal, setOpenModal] = useState(true);
+
+  const methods = useForm<AtmDetail>({
+    resolver: yupResolver(AtmInformationSchema),
+  });
+
+  const onSubmit: SubmitHandler<AtmDetail> = async (value) => {
+    console.log(value);
+  };
 
   const handleClose = () => {
     setOpenModal(false);
@@ -30,7 +65,9 @@ function App() {
             </div>
 
             <div className="mt-auto">
-              <AddAtmCardForm />
+              <FormProvider {...methods}>
+                <AddAtmCardForm onSubmit={onSubmit} />
+              </FormProvider>
             </div>
           </div>
           <div className="col-span-1 hidden md:block">

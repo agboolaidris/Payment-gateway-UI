@@ -1,5 +1,4 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-
 import { cva, VariantProps } from "class-variance-authority";
 import { IconType } from "react-icons";
 

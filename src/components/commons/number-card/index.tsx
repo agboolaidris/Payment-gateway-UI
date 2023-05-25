@@ -9,8 +9,11 @@ export const NumberCard = ({ texts }: Props) => {
     <div className="flex gap-1">
       {texts.map((text, index) => (
         <React.Fragment key={index}>
-          {text.split("").map((t) => (
-            <p className="h-8 w-5 bg-blue-950 text-sm text-white flex justify-center items-center rounded font-semibold">
+          {text.split("").map((t, idx) => (
+            <p
+              key={idx}
+              className="h-8 w-5 bg-blue-950 text-sm text-white flex justify-center items-center rounded font-semibold"
+            >
               {t}
             </p>
           ))}
